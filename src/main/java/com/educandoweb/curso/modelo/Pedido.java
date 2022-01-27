@@ -19,6 +19,9 @@ public class Pedido implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant momento;
 
+    @Enumerated(EnumType.STRING)
+    private PedidosStatus pedidosStatus = PedidosStatus.AGUARDANDO_PAGAMENTO;
+
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private User cliente;
@@ -37,6 +40,10 @@ public class Pedido implements Serializable {
     public User getCliente() {
         return cliente;
     }
+
+    public PedidosStatus getPedidosStatus() { return pedidosStatus; }
+
+    public void setPedidosStatus(PedidosStatus pedidosStatus) { this.pedidosStatus = pedidosStatus; }
 
     @Override
     public boolean equals(Object o) {

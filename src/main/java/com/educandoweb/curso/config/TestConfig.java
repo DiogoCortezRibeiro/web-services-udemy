@@ -1,7 +1,9 @@
 package com.educandoweb.curso.config;
 
+import com.educandoweb.curso.modelo.Categoria;
 import com.educandoweb.curso.modelo.Pedido;
 import com.educandoweb.curso.modelo.User;
+import com.educandoweb.curso.repository.CategoriaRepository;
 import com.educandoweb.curso.repository.PedidoRepository;
 import com.educandoweb.curso.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +24,17 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private PedidoRepository pedidoRepository;
 
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
     @Override
     public void run(String... args) throws Exception {
+        Categoria cat1 = new Categoria("Eletronicos");
+        Categoria cat2 = new Categoria( "Livros");
+        Categoria cat3 = new Categoria("Computadores");
+
+        categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
         User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
 
