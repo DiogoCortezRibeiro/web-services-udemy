@@ -16,6 +16,7 @@ public class Pedido implements Serializable {
     private Instant momento;
 
     @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private User cliente;
 
     public Pedido() {}

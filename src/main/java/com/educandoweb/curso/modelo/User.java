@@ -19,7 +19,7 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 
     public User() {}
