@@ -1,10 +1,9 @@
 package com.educandoweb.curso.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,6 +18,9 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+
+    @OneToMany
+    private List<Pedido> pedidos = new ArrayList<>();
 
     public User() {}
 
@@ -48,6 +50,11 @@ public class User implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+
+    public List<Pedido> getPedidos()
+    {
+        return this.pedidos;
     }
 
     @Override
