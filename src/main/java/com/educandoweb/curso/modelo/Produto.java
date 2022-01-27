@@ -18,7 +18,7 @@ public class Produto implements Serializable {
     private Double valor;
     private String imgUrl;
 
-    @OneToMany
+    @Transient
     private Set<Categoria> categorias = new HashSet<>();
 
     public Produto() {}
