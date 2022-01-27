@@ -1,11 +1,11 @@
 package com.educandoweb.curso.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Categoria implements Serializable {
@@ -16,6 +16,9 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+
+    @ManyToOne
+    private Set<Produto> produtos = new HashSet<>();
 
     public Categoria() {}
 
@@ -38,6 +41,8 @@ public class Categoria implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public Set<Produto> getProdutos() { return produtos; }
 
     @Override
     public boolean equals(Object o) {
