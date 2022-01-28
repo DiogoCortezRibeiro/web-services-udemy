@@ -1,5 +1,7 @@
 package com.educandoweb.curso.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -17,6 +19,7 @@ public class Pagamento implements Serializable {
 
     @OneToOne
     @MapsId
+    @JsonIgnore
     private Pedido pedido;
 
     public Pagamento() {}
