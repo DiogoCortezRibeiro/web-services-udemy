@@ -1,13 +1,7 @@
 package com.educandoweb.curso.config;
 
-import com.educandoweb.curso.modelo.Categoria;
-import com.educandoweb.curso.modelo.Pedido;
-import com.educandoweb.curso.modelo.Produto;
-import com.educandoweb.curso.modelo.User;
-import com.educandoweb.curso.repository.CategoriaRepository;
-import com.educandoweb.curso.repository.PedidoRepository;
-import com.educandoweb.curso.repository.ProdutoRepository;
-import com.educandoweb.curso.repository.UserRepository;
+import com.educandoweb.curso.modelo.*;
+import com.educandoweb.curso.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +25,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private ItemPedidoRepository itemPedidoRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -67,5 +64,12 @@ public class TestConfig implements CommandLineRunner {
         Pedido p3 = new Pedido(Instant.parse("2019-07-22T15:21:22Z"), u1);
 
         pedidoRepository.saveAll(Arrays.asList(p1, p2, p3));
+
+        ItemPedido oi1 = new ItemPedido(p1, prod1, 2, prod1.getValor());
+        ItemPedido oi2 = new ItemPedido(p1, prod3, 1, prod3.getValor());
+        ItemPedido oi3 = new ItemPedido(p2, prod3, 2, prod3.getValor());
+        ItemPedido oi4 = new ItemPedido(p3, prod5, 2, prod5.getValor());
+
+        itemPedidoRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
     }
 }
