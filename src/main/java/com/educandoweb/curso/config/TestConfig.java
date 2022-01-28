@@ -53,6 +53,15 @@ public class TestConfig implements CommandLineRunner {
 
         produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3, prod4, prod5));
 
+        prod1.getCategorias().add(cat2);
+        prod2.getCategorias().add(cat1);
+        prod2.getCategorias().add(cat3);
+        prod3.getCategorias().add(cat3);
+        prod4.getCategorias().add(cat3);
+        prod5.getCategorias().add(cat2);
+
+        produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3, prod4, prod5));
+
         Pedido p1 = new Pedido(Instant.parse("2019-06-20T19:53:07Z"), u1);
         Pedido p2 = new Pedido(Instant.parse("2019-07-21T03:42:10Z"), u2);
         Pedido p3 = new Pedido(Instant.parse("2019-07-22T15:21:22Z"), u1);
