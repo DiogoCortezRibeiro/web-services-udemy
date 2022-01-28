@@ -1,5 +1,7 @@
 package com.educandoweb.curso.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -60,6 +62,7 @@ public class Produto implements Serializable {
         return imgUrl;
     }
 
+    @JsonIgnore
     private Set<Pedido> getItems()
     {
         Set<Pedido> set = new HashSet<>();
